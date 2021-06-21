@@ -2,6 +2,7 @@ var os=require("os");
 const fetch = require('node-fetch')
 const express = require('express');
 const bodyParser = require('body-parser');
+let winston=require('winston');
 let app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -16,12 +17,24 @@ let check_work = null;
 let localIP = null;
 let contTms = 0;
 
+let logger = winston.createLogger({
+    transports: [
+        new (winston.transports.Console)(),
+        new (winston.transports.File)({ 
+            filename: './log/autoRuijie.log',
+            timestamp:'true', 
+            maxsize: 10485760, 
+            maxFiles: 10 })
+    ]});
+
+
 function setConf(config){
     contTms = 0;
     if(!config)return;
     clearInterval(check_work);
     working = config.working;
     if(config.working)check_work = setInterval(work,freq=parseInt(Math.max(Math.min(config.freq,hig_freq),low_freq)));
+    logger.log('info', 'Set Config', {config:config, time:new Date()});
     return;
 }
 
@@ -56,6 +69,7 @@ async function work(){
 }
 
 function identify(){
+    logger.log('info', 'login', {time:new Date()});
     return fetch("http://222.198.127.170/eportal/InterFace.do?method=login", {
         "headers": {
             "accept": "*/*",
