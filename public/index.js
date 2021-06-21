@@ -10,10 +10,7 @@ window.onload=function(){
         working = d.data.working;
         freq.value=d.data.freq
     })
-    .catch(e=>{
-        console.log(e)
-        alert("NodeJS Error")
-    })   
+    .catch(e=>alert("500: Server Error"))   
 
     smt.onclick = ()=>{
         axios({
@@ -27,11 +24,8 @@ window.onload=function(){
                 }
             }
         })
-        .then(d=>{
-            if(d.data===true)location.reload();
-            else return Promise.reject();
-        })
-        .catch((e)=>{alert(e?"Node 服务器错误 500":"密码错误")})
+        .then(d=>d.data===true?location.reload():Promise.reject())
+        .catch(e=>alert(e?"500: 服务器错误":"401: 密码错误"))
         return false;
     }
 }

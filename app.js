@@ -100,8 +100,8 @@ app.post("/api-stat",(req,res)=>{
 
 app.use("/public/",express.static("./public/"))
 
-app.server = app.listen(9124,()=>{
-    console.log("working at 127.0.0.1:9124")
+let server = app.listen(9124,()=>{
     last_fail = new Date().getTime();
     localIP = os.networkInterfaces().wlo1[0].address;
+    console.log(`working at ${localIP}:${server.address().port}`)
 })
