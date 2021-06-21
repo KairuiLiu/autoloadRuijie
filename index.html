@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>K2 NetWork Manager</title>
+   <link rel="stylesheet" href="/public/backend.css?v=1.0.0">
+   <script src="/public/axios.min.js"></script>
+</head>
+<body class="">
+   <div class="wrapper">         
+      <section class="login-content">
+         <div class="container">
+            <div class="row align-items-center justify-content-center height-self-center">
+               <div class="col-lg-8">
+                  <div class="card auth-card">
+                     <div class="card-body p-0">
+                        <div class="d-flex align-items-center auth-content">
+                           <div class="col-lg-7 align-self-center">
+                              <div class="p-3">
+                                 <h2 class="mb-2">校园网心跳检测</h2>
+                                 <p>配置斐逊K2校园网检测频率.</p>
+                                 <form>
+                                    <div class="row">
+                                       <div class="col-lg-12">
+                                          <div class="floating-label form-group">
+                                             <input class="floating-input form-control" id="pwd" required type="password">
+                                             <label>访问密码</label>
+                                          </div>
+                                       </div>
+                                       <div class="col-lg-12">
+                                          <div class="floating-label form-group">
+                                             <input class="floating-input form-control" id="freq" required type="number" placeholder=" ">                                             
+                                             <label>检测间隔</label>
+                                          </div>
+                                       </div>
+                                       <div class="col-lg-12">
+                                          <div class="swich-box form-group">
+                                             <label for="workon" >开启检测</label>
+                                             <input id="wko" name="workon" type="checkbox" class="switch" checked />
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <button id="smt"  class="btn btn-primary">提交</button>
+                                 </form>
+                              </div>
+                           </div>
+                           <div class="col-lg-5 content-right">
+                              <img src="public/01.png" class="img-fluid image-right" alt="">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+
+   <!-- Backend Bundle JavaScript -->
+</body>
+<script src="/public/index.js"></script>
+</html>
